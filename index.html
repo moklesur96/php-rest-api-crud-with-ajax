@@ -9,11 +9,69 @@
 </head>
 <body>
 
+    <main class="container">
+        <dialog id="edit-model">
+            <article>
+                <header>
+                    <a href="#close" aria-label="Close" class="close" data-target="edit-model"
+                        onClick="toggleModal(event)"></a>
+                    Update Student Data
+                </header>
+                <form id="edit-data">
+                    <input type="text" id="id" name="id" hidden>
+                    Name
+                    <input type="text" id="edit-name" name="name">
+                    Age
+                    <input type="number" id="edit-age" name="age">
+                    City
+                    <input type="text" id="edit-city" name="city">
+                    <!-- Button -->
+                    <button type="submit" id="update">Update</button>
+                </form>
+            </article>
+        </dialog>
 
+        <!-- MODEL FOR FORM POPUP  -->
+        <dialog id="form-popup">
+            <article>
+                <header>
+                    <a href="#close" aria-label="Close" class="close" data-target="form-popup"
+                        onClick="toggleModal(event)"></a>
+                    <span id="status"></span>
+                </header>
+                <span id="popup-text"></span>
+            </article>
+        </dialog>
+        <div class="grid">
+            <h1>PHP Rest API CRUD With Ajax</h1>
+            <input type="search" id="search" name="search" placeholder="Search">
+        </div>
+        <form id="add-student-form">
 
-
-    <h1>Hello World!</h1>
-
+            <!-- Grid -->
+            <div class="grid">
+                <input type="text" id="name" name="name" placeholder="Name">
+                <input type="number" id="age" name="age" placeholder="Age">
+                <input type="text" id="city" name="city" placeholder="City">
+            </div>
+            <!-- Button -->
+            <button type="submit" id="add-student-btn">ADD</button>
+        </form>
+        <!-- table  -->
+        <table role="grid" class="margin-5" id="data-table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </main>
 
 
 
