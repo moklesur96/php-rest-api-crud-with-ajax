@@ -15,8 +15,8 @@ $sql = "INSERT INTO students(name,age,city) VALUES('$name', $age, '$city')";
 
 if (mysqli_query($connDB, $sql)) {
     echo json_encode(array(
-        "message" => "New Student Added Sucessfully.",
-        "status" => true
+        'message' => 'New Student Added Sucessfully.',
+        'status' => true
     ));
 } else {
     echo json_encode(array(

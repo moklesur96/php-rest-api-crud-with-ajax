@@ -15,3 +15,28 @@ function loadData() {
         }
     })
 }
+
+
+
+// Function => Form Data Convert To Json
+function formToJson(formId) {
+    var formData = $(formId).serializeArray();
+    var obj = {}
+    for (var i = 0; i < formData.length; i++) {
+        if (formData[i].value == '') {
+            return false
+        } else {
+            obj[formData[i].name] = formData[i].value;
+        }
+    }
+    var jsonData = JSON.stringify(obj);
+    return jsonData
+}
+
+// Function => Add new student
+// function addStudent(formID) {
+//     var jsonData = formToJson(formID)
+//     $.ajax({
+        
+//     })
+// }

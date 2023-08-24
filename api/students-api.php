@@ -5,7 +5,7 @@ header('Access-Control-Allow-Origin: *');
 
 include '../config.php';
 
-$sql = "SELECT * FROM students";
+$sql = "SELECT * FROM students ORDER BY id DESC";
 $result = mysqli_query($connDB, $sql) or die($connDB);
 
 if (mysqli_num_rows($result) > 0) {
