@@ -66,4 +66,27 @@ $(document).ready(function () {
             }
         })
     })
+
+    // Delete Student Data
+    $(document).on('click', '#delete', function (e) {
+        e.preventDefault()
+        var deleteId = $(this).data('id')
+        var obj = { studentId: deleteId }
+        var id = JSON.stringify(obj);
+
+        if (confirm('Would You like to Delete?')) {
+            $.ajax({
+                url: 'http://localhost/php/php-rest-api-crud-with-ajax/api/delete-student-api.php',
+                type: 'POST',
+                data: id,
+                success: function (data) {
+                    if (data.status == true) {
+                        loadData()
+                    }
+                }
+            })
+        }
+
+
+    })
 })
