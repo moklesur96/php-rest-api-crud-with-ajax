@@ -9,7 +9,7 @@ function loadData() {
                 $('#data-table tbody').append('No Data Found.')
             } else {
                 $.each(data, function (key, value) {
-                    $('#data-table tbody').append('<tr><th scope="row">' + value.id + '</th><td>' + value.name + '</td><td>' + value.age + '</td><td>' + value.city + '</td><td><a href="#">Edit</a></td><td><a href="#">Delete</a></td></tr>')
+                    $('#data-table tbody').append('<tr><th scope="row">' + value.id + '</th><td>' + value.name + '</td><td>' + value.age + '</td><td>' + value.city + '</td><td><a id="edit" data-id="' + value.id + '" href="#">Edit</a></td><td><a href="#">Delete</a></td></tr>')
                 })
             }
         }

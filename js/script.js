@@ -8,14 +8,60 @@ $(document).ready(function () {
         var jsonData = formToJson("#add-student-form")
         $.ajax({
             url: 'http://localhost/php/php-rest-api-crud-with-ajax/api/add-student-api.php',
-            method: 'POST',
+            type: 'POST',
             data: jsonData,
             success: function (data) {
                 var data = JSON.parse(data)
                 if (data.status == true) {
                     loadData();
-                    console.log(data.message)
                     $("#add-student-form").trigger('reset')
+                }
+            }
+        })
+    })
+
+
+    // Load Update form with Data
+    $(document).on('click', '#edit', function (e) {
+        e.preventDefault()
+        var studentId = $(this).data('id');
+        var obj = { student_id: studentId }
+        var studentJsonID = JSON.stringify(obj);
+
+        // Fill input box with data
+        $.ajax({
+            url: 'http://localhost/php/php-rest-api-crud-with-ajax/api/single-student-api.php',
+            type: 'POST',
+            data: studentJsonID,
+            success: function (data) {
+                $('#id').val(data[0].id)
+                $('#edit-name').val(data[0].name)
+                $('#edit-city').val(data[0].city)
+                $('#edit-age').val(data[0].age)
+            }
+        })
+
+
+
+        // open model
+        $('#edit-model').attr('open', true);
+
+
+    })
+
+    // Update Student Data
+    $('#update').on('click', function (e) {
+        e.preventDefault()
+        var myJson = formToJson('#edit-data');
+
+        $.ajax({
+            url: 'http://localhost/php/php-rest-api-crud-with-ajax/api/update-student-api.php',
+            type: 'PUT',
+            data: myJson,
+            success: function (data) {
+                if (data.status == true) {
+                    loadData()
+                    $('#edit-model').attr('open', false);
                 }
             }
         })
