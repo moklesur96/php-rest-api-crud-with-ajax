@@ -89,4 +89,26 @@ $(document).ready(function () {
 
 
     })
+
+    // Search Data
+    $('#search').on('keyup', function (e) {
+        $('#data-table tbody').html('')
+        var keyword = $(this).val()
+
+        $.ajax({
+            url: 'http://localhost/php/php-rest-api-crud-with-ajax/api/search-api.php?search=' + keyword,
+            type: 'GET',
+            success: function (data) {
+                if (data.status == false) {
+                    $('#data-table tbody').append(data.message);
+                } else {
+                    $.each(data, function (key, value) {
+                        $('#data-table tbody').append(
+                            '<tr><th scope="row">' + value.id + '</th><td>' + value.name + '</td><td>' + value.age + '</td><td>' + value.city + '</td><td><a href="#" class="edit" data-id = ' + value.id + ' data-target="edit-model" onClick="toggleModal(event)">Edit</a></td><td><a href="#" class="delete" data-id=' + value.id + '>Delete</a></td></tr>'
+                        )
+                    })
+                }
+            }
+        })
+    })
 })
